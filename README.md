@@ -1,1 +1,1 @@
-# Infini-attention_T5_QLoRA
+# Slim-attention_T5_QLoRA
