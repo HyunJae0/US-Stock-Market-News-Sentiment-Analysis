@@ -1,3 +1,8 @@
+#  Derived from https://github.com/microsoft/LoRA
+#  ------------------------------------------------------------------------------------------
+#  Copyright (c) Microsoft Corporation. All rights reserved.
+#  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
+#  ------------------------------------------------------------------------------------------
 import torch
 import torch.nn as nn
 import torch.nn.init as init
@@ -212,4 +217,5 @@ class LoRAEmbeddingLayer(nn.Embedding, LoRA):
 #    print('4',output)
 #    lora_embedding = LoRAEmbedding(r=2, alpha=1, num_embeddings=10, embedding_dim=10)
 #    output = lora_embedding(x)
+
 #    print('5', output)
