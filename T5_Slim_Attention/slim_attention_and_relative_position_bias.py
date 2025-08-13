@@ -1,3 +1,8 @@
+# This file includes the `_get_relative_position_bucket` function from:
+# Mesh TensorFlow (https://github.com/tensorflow/mesh/blob/0cb87fe07da627bf0b7e60475d59f95ed6b5be3d/mesh_tensorflow/transformer/transformer_layers.py)
+# Licensed under the Apache License 2.0
+# Copyright 2019 The Mesh TensorFlow Authors
+
 import torch
 import torch.nn as nn
 import math
@@ -272,6 +277,7 @@ class CrossAttentionWithECache(Attention):
         context_h = weights @ V_h
         context = self.W_o(self._concat_heads(context_h))
         return context
+
 
 
 
