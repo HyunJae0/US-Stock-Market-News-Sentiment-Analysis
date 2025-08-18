@@ -55,7 +55,7 @@ class T5DecoderLayer(nn.Module):
 
         # 2. cross-attention
         self.layer_norm_2 = T5LayerNorm(config)
-        self.decoder_cross_attention = CrossAttentionWithECache(config)
+        self.decoder_cross_attention = CrossAttentionWithKVCache(config)
         self.dropout_2 = nn.Dropout(config.dropout_rate)
 
         # 3. feed forward network
@@ -99,7 +99,7 @@ class T5Decoder(nn.Module):
         for decoder_layer in self.decoder_layers:
             # DecoderSelfAttentionWithKCache cache reset
             decoder_layer.decoder_self_attention.reset_k_cache()
-            # CrossAttentionWithEcache cache reset
+            # CrossAttentionWithKVcache cache reset
             decoder_layer.decoder_cross_attention.reset_e_kv_cache()
 
 class T5Transformer(nn.Module):
@@ -195,4 +195,5 @@ class T5Transformer(nn.Module):
             trg_tokens = torch.cat([trg_tokens, next_token], dim=1)
 
             if generation_finish_mask.all(): break # terminate generate phase when all sequences generated
+
         return trg_tokens
