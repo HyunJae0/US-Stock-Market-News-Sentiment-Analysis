@@ -242,7 +242,7 @@ class DecoderSelfAttentionWithKcache(Attention):
                 return self._training_forward(hidden_states, mask=mask, position_bias=position_bias)
 
 
-class CrossAttentionWithECache(Attention):
+class CrossAttentionWithKVCache(Attention):
     def __init__(self, config):
         super().__init__(config, use_relative_attention_bias=False)
         self.register_buffer('e_cache_k', None, persistent=False)
@@ -277,6 +277,7 @@ class CrossAttentionWithECache(Attention):
         context_h = weights @ V_h
         context = self.W_o(self._concat_heads(context_h))
         return context
+
 
 
 
