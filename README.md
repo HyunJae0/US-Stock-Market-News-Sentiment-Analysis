@@ -50,7 +50,13 @@
 - T5는 unsupervised task와 supervised task를 같이 사전학습하는 방식으로 multi-task pre-training을 사용했습니다.
 - 그러나 이 프로젝트에서 사용하는 supervised task는 single task이기 때문에, multi-task pre-training은 적합하지 않다고 판단하여 unsupervised task에 대해서만 사전학습을 진행하였습니다. 
 
+5. 기타
+- Dynamic Masking: 모델이 매 에폭마다 새로운 형태의 입력 데이터를 학습할 수 있도록 dynamic masking을 사용하였습니다.
+- <code>run_pretraining.py</code>의 <code>create_t5_pretraining_data</code> 함수
 
+- AMP(Automatic Mixed Precision): 학습 시 메모리 사용량을 줄이기 위해 PyTorch의 AMP를 사용하였습니다.
+- 모델 파라미터는 FP32으로 유지하되, 연산(곱셈, 덧셈 등)만 FP16으로 수행합니다.
+- 
 
 ### 2.4 slim attention
 
