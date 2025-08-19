@@ -5,7 +5,7 @@
 
 이 사전학습 모델을 이용하여 두 가지 방식의 파인튜닝을 진행했습니다. 
 - 첫 번째는 일반적인 classification task에서 많이 사용되는 방법으로, 모델에 classification head layer를 추가하여 파인튜닝하는 방식입니다.
-- 두 번째는 T5처럼 text-to-text로 파인튜닝하는 방식입니다.  
+- 두 번째는 T5처럼 text-to-text로 파인튜닝하는 방식입니다. 이를 위해 'sentiment: '라는 prefix를 사용했습니다.
 
 ## 1. datasets
 파인튜닝에 사용할 텍스트 데이터셋은 야후 파이낸셜 뉴스이며, 각 뉴스에 Bearish/Neutral/Bullish 레이블이 붙어 있는 지도학습 데이터셋입니다. (https://huggingface.co/datasets/ugursa/Yahoo-Finance-News-Sentences/viewer/default/train?views%5B%5D=train&row=10)
