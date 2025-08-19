@@ -65,6 +65,7 @@
 - 배치 사이즈를 64로 사용할 때, 에폭당 스텝 수는 1,670이며 40 에폭 동안 학습할 경우, 총 학습 스텝 수는 66,800입니다. 이 중 10%를 웜업 스텝으로 설정하였습니다. <code>T5_Slim_Attention/config.py</code>
 - 논문처럼 Adafactor optimizer와 inverse square root learning rate schedule을 사용했습니다. <code>T5_Slim_Attention/run_pretraining.py</code>
 
+
 위와 같은 방법론에 따라 사전학습을 진행했을 때, train loss와 valid loss는 다음과 같았습니다. <code>T5_Slim_Attention/run_pretraining.ipynb</code>
 <div align="center">
   <img width="400" height="400" alt="image" src="https://github.com/user-attachments/assets/f687b12f-bc84-4f97-b48f-7d3bc90a1b3a" />
