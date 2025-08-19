@@ -1,12 +1,14 @@
 # US Stock Market News Sentiment Analysis
 ## 1. pre-training
 
-### 1.1 dataset
+### 1.1 dataset 
+
+### 1.2 tokenizer
 
 
-### 1.2 t5
+### 1.3 t5
 
-### 1.3 slim attention
+### 1.4 slim attention
 
 
 <div align="center">
