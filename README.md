@@ -2,13 +2,11 @@
 
 ## 1. datasets
 
-## 2. tokenizer
+## 2. pre-training
 
-## 3. pre-training
+### 2.3 t5
 
-### 3.3 t5
-
-### 3.4 slim attention
+### 2.4 slim attention
 
 
 <div align="center">
@@ -16,10 +14,10 @@
 </div>
 
 
-## 4. fine-tuning
+## 3. fine-tuning
 
-### 4.1 qlora
+### 3.1 qlora
 
-### 4.2 classification head fine-tuning
+### 3.2 classification head fine-tuning
 
-### 4.3 text-to-text fine-tuning
+### 3.3 text-to-text fine-tuning
