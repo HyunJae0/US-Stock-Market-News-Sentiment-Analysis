@@ -35,12 +35,12 @@
 ### 3.2 classification head fine-tuning
 
 <div align="center">
-  <img width="323" height="278" alt="image" src="https://github.com/user-attachments/assets/148239b3-74d5-42ff-a4d4-9261c199a3b7" />
+  <img width="300" height="250" alt="image" src="https://github.com/user-attachments/assets/148239b3-74d5-42ff-a4d4-9261c199a3b7" />
 </div>
 
 
 ### 3.3 text-to-text fine-tuning
 
 <div align="center">
-  <img width="800" height="291" alt="image" src="https://github.com/user-attachments/assets/0e8d3bf9-7ab2-4bb2-b66b-49e766000a8d" />
+  <img width="700" height="300" alt="image" src="https://github.com/user-attachments/assets/0e8d3bf9-7ab2-4bb2-b66b-49e766000a8d" />
 </div>
