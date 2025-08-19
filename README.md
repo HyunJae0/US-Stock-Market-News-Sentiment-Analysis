@@ -85,22 +85,19 @@ KV-Cache가 차지하는 크기가 절반을 줄어드는 이유는 V-Cache를 �
 
 이것이 가능한 이유는 K로부터 V를 계산하기 때문입니다. 즉, 추론 과정에서 V-Cache를 사용하지 않고 K-Cache만 사용합니다. 단, 가중치 행렬이 정방행렬이어야 한다는 조건이 붙습니다.
 
-입력 \(X\)에 대해  $K = XW_k, V = XW_v$로 계산된다. 만약 $W_k, W_v \in \mathbb{R}^{d \times d}$ 가 정방행렬이라면, 행렬식이 0이 아니라는 가정 하에 역행렬이 존재하기 때문에$K = XW_k$의 양변에 $W^{-1}_k$를 곱해 $X = KW_k^{-1}$로 나타낼 수 있습니다. 
+입력 \(X\)에 대해  $K = XW_k, V = XW_v$로 계산됩니다. 만약 $W_k, W_v \in \mathbb{R}^{d \times d}$ 가 정방행렬이라면, 행렬식이 0이 아니라는 가정 하에 역행렬이 존재하기 때문에
 
+$K = XW_k$의 양변에 $W^{-1}_k$를 곱해 $X = KW_k^{-1}$로 나타낼 수 있습니다. 
 
+$X = KW_k^{-1}$를 $V = XW_v$에 대입하면, $V = XW_v = KW_k^{-1}W_v = KW_{kv}$가 성립합니다. 
 
+여기서 $W_{kv} = W_k^{-1}W_v$를 추론 전에 미리 계산해두면, 추론 과정에서는 K만 캐싱해두고 필요할 때마다 $V = KW_{kv}$를 계산할 수 있습니다.
 
-
-
-
-
+이것이 바로 slim attention 논문에서 주장하는 'K-Cache is all you need'이며, V-Cache를 사용하지 않기 때문에 기존 KV-Cache 메모리 사용량의 절반을 줄일 수 있습니다. 
 
 <div align="center">
   <img width="600" height="600" alt="image" src="https://github.com/user-attachments/assets/867c82aa-3781-4ffa-a1d2-108b00b17256" />
 </div>
-
-
-
 
 
 ## 3. fine-tuning
