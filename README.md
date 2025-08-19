@@ -17,6 +17,9 @@
 비지도 사전학습을 위한 데이터셋 처리에 대한 내용은 <code>prepare_unsupervised_dataset_for_pretraining.ipynb</code>에서, 파인튜닝을 위한 데이터셋 처리에 대한 내용은 <code>prepare_supervised_dataset_for_finetuning.ipynb</code>에서 확인할 수 있습니다. 
 
 ## 2. pre-training
+사전학습 모델은 Google에서 발표한 "Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer" 논문(https://arxiv.org/abs/1910.10683)에서 제안된 T5(Text-to-Text Transfer Transformer) 모델의 방법론을 기반으로 합니다. 
+- 
+-- 
 
 ### 2.3 slim attention
 
