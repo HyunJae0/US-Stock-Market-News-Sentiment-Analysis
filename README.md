@@ -22,6 +22,10 @@
 
 ### 2.4 t5
 
+<div align="center">
+  <img width="350" height="150" alt="image" src="https://github.com/user-attachments/assets/40b5a0d0-a921-404c-b5d5-4befa2788d5f" />
+</div>
+
 
 <div align="center">
   <img width="400" height="400" alt="image" src="https://github.com/user-attachments/assets/f687b12f-bc84-4f97-b48f-7d3bc90a1b3a" />
