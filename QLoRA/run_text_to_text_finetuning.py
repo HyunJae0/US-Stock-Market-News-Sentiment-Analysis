@@ -12,6 +12,12 @@ from t5.config import T5Config
 from qlora.lora_4bit import LoRALayer4bit, apply_qlora_to_model
 
 
+def setup_lora_training(model, r, alpha, lora_dropout, device):
+    for param in model.parameters():
+        param.requires_grad = False
+    apply_qlora_to_model(model, r=r, alpha=alpha, lora_dropout=lora_dropout, device=device)
+    return model
+
 def train(model, dataloader, criterion, optimizer, scheduler, tokenizer, config):
     model.train()
     total_loss, num_correct, total_acc = 0, 0, 0
@@ -96,7 +102,7 @@ if __name__ == '__main__':
     model_weights = state_dict['model_state_dict']
 
     model.load_state_dict(model_weights)
-    apply_qlora_to_model(model, r=8, alpha=8, lora_dropout=0, device=config.device)
+    setup_lora_training(model, r=8, alpha=8, lora_dropout=0, device=config.device)
     print(f'The model has {count_parameters(model):,} trainable parameters')
 
     criterion = nn.CrossEntropyLoss(ignore_index=config.pad_idx)
@@ -137,4 +143,5 @@ if __name__ == '__main__':
             best_acc = valid_loss
             patience_check = 0
             torch.save(model.state_dict(), 'best_finetuning_model.pt')
+
             print(f'New model saved with validation accuracy: {best_acc:.2f}')
