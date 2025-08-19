@@ -41,8 +41,8 @@
 ### 3.1 qlora
 
 <div align="center">
-  <img width="596" height="251" alt="image" src="https://github.com/user-attachments/assets/a00913ff-72d8-4350-9011-e2cc7b3684ec" />
-</div> [출처] https://docs.nvidia.com/nemo-framework/user-guide/24.09/sft_peft/qlora.html
+  <img width="285" height="250" alt="image" src="https://github.com/user-attachments/assets/6f80cbc3-6160-405f-ac6a-f92cba474f09" />
+</div> 
 
 ### 3.2 classification head fine-tuning
 
