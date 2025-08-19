@@ -42,5 +42,5 @@
 ### 3.3 text-to-text fine-tuning
 
 <div align="center">
-  <img width="700" height="300" alt="image" src="https://github.com/user-attachments/assets/0e8d3bf9-7ab2-4bb2-b66b-49e766000a8d" />
+  <img width="600" height="300" alt="image" src="https://github.com/user-attachments/assets/0e8d3bf9-7ab2-4bb2-b66b-49e766000a8d" />
 </div>
