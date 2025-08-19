@@ -34,6 +34,10 @@
 
 ## 3. fine-tuning
 
+<div align="center">
+  <img width="700" height="250" alt="image" src="https://github.com/user-attachments/assets/0be484dc-dd7b-43ce-97da-3cedd86672bf" />
+</div>
+
 ### 3.1 qlora
 
 ### 3.2 classification head fine-tuning
