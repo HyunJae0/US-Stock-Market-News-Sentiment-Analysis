@@ -127,6 +127,11 @@ BERT에서는 classification task를 위해  모델에 classification head layer
 
 ### 3.3 text-to-text fine-tuning
 
+<code>QLoRA/run_text_to_text_finetuning.py</code>는 기존 T5 모델의 가중치 파라미터를 동결하고, QLoRA 어댑터만 학습하도록 구현한 코드입니다. 
+
+또한, T5의 text-to-text 접근법을 이용하였습니다. 구체적으로, <code>"sentiment: 뉴스 내용"</code>이라는 입력 텍스트를 제공하면, T5의 lm_head layer를 통해 <code>"Bearish"</code>, <code>"Neutral"</code>, <code>"Bullish"</code> 중 하나를 텍스트로 생성합니다. 
+
+이때, 모델의 출력과 정답 텍스트가 정확히 일치(문자열 일치)하는 경우에만 정답으로 처리하였습니다. 
 
 <div align="center">
   <img width="600" height="300" alt="image" src="https://github.com/user-attachments/assets/0e8d3bf9-7ab2-4bb2-b66b-49e766000a8d" />
