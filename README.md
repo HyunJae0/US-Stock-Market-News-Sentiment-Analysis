@@ -23,8 +23,7 @@
 1. 시퀀스 패킹(sequence packing)
 
 - 논문에서는 패딩 토큰으로 인한 연산 낭비를 최소화하기 위해 시퀀스 패킹을 적용하였습니다.
-- 이 프로젝트에서도 이러한 낭비를 줄이고자, 여러 입력 토큰 ID를 이어 붙여 시퀀스 최대 길이(512)를 채우는 방식을 사용했습니다.
-- 이에 대한 내용은 <code>prepare_unsupervised_dataset_for_pretraining.ipynb</code>에서 확인할 수 있습니다.
+- 이 프로젝트에서도 이러한 낭비를 줄이고자, 여러 입력 토큰 ID를 이어 붙여 시퀀스 최대 길이(512)를 채우는 방식을 사용했습니다. <code>prepare_unsupervised_dataset_for_pretraining.ipynb</code>
 
 2. 상대 위치 인코딩(Relative Position Encoding)
 - 절대 위치 인코딩은 추론 시, 학습 과정에서 보지 못했던 시퀀스 길이가 입력으로 들어오면 해당 위치 정보를 잘 처리하지 못합니다. 즉, 학습한 범위를 벗어나는 길이에 대해서는 일반화 성능이 떨어진다는 단점이 있습니다. 
@@ -34,7 +33,7 @@
 - 이 상대 거리 값들을 그대로 사용하면 다양한 거리 값들이 사용되기 때문에, 가까운 거리는 고유한 값으로(예: 1~7)먼 거리(예: 8 이상)에 대해서는 로그 스케일을 적용합니다.
 - 그리고 이 값들을 제한된 제한된 개수의 그룹(버킷, bucket)으로 묶습니다.
 - 최종적으로, 임베딩 테이블에서 버킷 ID에 해당하는 편향 값을 가져와서 어텐션 스코어에 더해줍니다. 
-- 이에 대한 내용은 <code>T5_Slim_Attention/slim_attention_and_relative_position_bias.py</code>의 <code>Attention</code> 클래스의 <code>_get_relative_position_bucket</code> 함수와  <code>_compute_bias</code> 함수에서 확인할 수 있습니다.
+- <code>T5_Slim_Attention/slim_attention_and_relative_position_bias.py</code>의 <code>Attention</code> 클래스의 <code>_get_relative_position_bucket</code> 함수와  <code>_compute_bias</code> 함수
 
 3. 사전학습 목적 함수
 - 사전학습에는 T5 논문에서 제안한 replace corrupted spans objective를 사용했습니다.
@@ -44,7 +43,7 @@
   <img width="350" height="150" alt="image" src="https://github.com/user-attachments/assets/40b5a0d0-a921-404c-b5d5-4befa2788d5f" />
 </div>
 
-- 이에 대한 내용은 <code>T5_Slim_Attention/T5_Slim_Attention/span_corruption.py</code>와 <code>run_pretraining.py</code>에서 확인할 수 있습니다.
+- <code>T5_Slim_Attention/T5_Slim_Attention/span_corruption.py</code>와 <code>run_pretraining.py</code>
 
 4. Multi-task Learning 
 - T5는 unsupervised task와 supervised task를 같이 사전학습하는 방식으로 multi-task pre-training을 사용했습니다.
@@ -54,8 +53,7 @@
 - Dynamic Masking: 모델이 매 에폭마다 새로운 형태의 입력 데이터를 학습할 수 있도록 dynamic masking을 사용하였습니다.
 - <code>run_pretraining.py</code>의 <code>create_t5_pretraining_data</code> 함수
 
-- AMP(Automatic Mixed Precision): 학습 시 메모리 사용량을 줄이기 위해 PyTorch의 AMP를 사용하였습니다.
-- <code>run_pretraining.py</code>의 <code>train</code> 함수
+- AMP(Automatic Mixed Precision): 학습 시 메모리 사용량을 줄이기 위해 PyTorch의 AMP를 사용하였습니다. <code>run_pretraining.py</code>의 <code>train</code> 함수
 - 참고: https://yjoonjang.medium.com/mixed-precision-training%EC%97%90-%EB%8C%80%ED%95%B4-%EC%95%8C%EC%95%84%EB%B3%B4%EC%9E%90-mp-amp-torch-cuda-amp-15c99488ed34
 
 - Sentinel Token Loss Handling:
