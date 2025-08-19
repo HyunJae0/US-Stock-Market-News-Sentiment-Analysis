@@ -10,7 +10,7 @@ from tqdm.auto import tqdm
 
 from t5.encoder_decoder import T5Transformer
 from t5.config import T5Config
-from qlora.lora_4bit import LoRALayer4bit, apply_qlora_to_model
+
 
 class ClassificationHead(nn.Module):
     def __init__(self, config):
@@ -135,7 +135,6 @@ if __name__ == '__main__':
     model_weights = state_dict['model_state_dict']
 
     model.transformer.load_state_dict(model_weights)
-    apply_qlora_to_model(model, r=8, alpha=8, lora_dropout=0, device=config.device)
     print(f'The model has {count_parameters(model):,} trainable parameters')
 
     criterion = nn.CrossEntropyLoss(ignore_index=config.pad_idx)
@@ -176,4 +175,5 @@ if __name__ == '__main__':
             print(f'New model saved with validation accuracy: {best_acc:.2f}')
         else:
             patience_check += 1
+
             if patience_check == patience_limit: break
