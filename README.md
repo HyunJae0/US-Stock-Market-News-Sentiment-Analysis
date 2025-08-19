@@ -44,7 +44,7 @@
   <img width="350" height="150" alt="image" src="https://github.com/user-attachments/assets/40b5a0d0-a921-404c-b5d5-4befa2788d5f" />
 </div>
 
-- 이에 대한 내용은 <code>T5_Slim_Attention/T5_Slim_Attention/span_corruption.py</code>에서 확인할 수 있습니다.
+- 이에 대한 내용은 <code>T5_Slim_Attention/T5_Slim_Attention/span_corruption.py</code>와 <code>run_pretraining.py</code>에서 확인할 수 있습니다.
 
 4. Multi-task Learning 
 - T5는 unsupervised task와 supervised task를 같이 사전학습하는 방식으로 multi-task pre-training을 사용했습니다.
