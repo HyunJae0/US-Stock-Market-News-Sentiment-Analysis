@@ -19,7 +19,7 @@
 ## 2. pre-training
 사전학습 모델은 Google에서 발표한 "Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer" 논문(https://arxiv.org/abs/1910.10683)에서 제안된 T5(Text-to-Text Transfer Transformer) 모델의 방법론을 기반으로 합니다. 
 
-- (1) 시퀀스 패킹(sequence packing)
+(1) 시퀀스 패킹(sequence packing)
 - 
 -- 논문에서는 패딩 토큰으로 인한 연산 낭비를 최소화하기 위해 시퀀스 패킹을 적용하였습니다.
   
