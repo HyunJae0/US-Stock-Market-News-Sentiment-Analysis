@@ -101,6 +101,7 @@ $X = KW_k^{-1}$를 $V = XW_v$에 대입하면, $V = XW_v = KW_k^{-1}W_v = KW_{kv
 
 
 ## 3. fine-tuning
+T5 연구에서는 사전학습된 모델을 다양한 다운스트림 태스크에 파인튜닝하는 방법을 비교 실험하였으며, 특히 어댑터 레이어를 활용할 경우 합리적인 성능을 유지할 수 있음을 확인하였습니다. 이 실험 결과에 착안하여 QLoRA를 사용했습니다. 
 
 <div align="center">
   <img width="600" height="250" alt="image" src="https://github.com/user-attachments/assets/0be484dc-dd7b-43ce-97da-3cedd86672bf" />
