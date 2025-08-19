@@ -114,7 +114,7 @@ QLoRA는 간단히 설명하면, 양자화된 선형 레이어를 사용하는 L
   <img width="285" height="250" alt="image" src="https://github.com/user-attachments/assets/6f80cbc3-6160-405f-ac6a-f92cba474f09" />
 </div> 
 
-사전학습 모델의 가중치(위 그림의 왼쪽 가중치 행렬)는 NF4로 양자화되며 LoRA 가중치 A, B(위 그림의 오른쪽 가중치 행렬)는 BF16으로 계산됩니다. 이를 구현하기 위해 bitsandbytes 라이브러리를 이용하였습니다. 기본적인 LoRA에 대한 구현: <code>QLoRA/lora.py</code>, QLoRA에 대한 구현: <code>QLoRA/lora.py</code>
+사전학습 모델의 가중치(위 그림의 왼쪽 가중치 행렬)는 NF4로 양자화되며 LoRA 가중치 A, B(위 그림의 오른쪽 가중치 행렬)는 BF16으로 계산됩니다. 이를 구현하기 위해 bitsandbytes 라이브러리를 이용하였습니다. 기본적인 LoRA에 대한 구현: <code>QLoRA/lora.py</code>, QLoRA에 대한 구현: <code>QLoRA/lora_4bit.py</code>
 
 ### 3.2 classification head fine-tuning
 
