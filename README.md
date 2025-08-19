@@ -117,13 +117,16 @@ QLoRA는 간단히 설명하면, 양자화된 선형 레이어를 사용하는 L
 사전학습 모델의 가중치(위 그림의 왼쪽 가중치 행렬)는 NF4로 양자화되며 LoRA 가중치 A, B(위 그림의 오른쪽 가중치 행렬)는 BF16으로 계산됩니다. 이를 구현하기 위해 bitsandbytes 라이브러리를 이용하였습니다. 기본적인 LoRA에 대한 구현: <code>QLoRA/lora.py</code>, QLoRA에 대한 구현: <code>QLoRA/lora_4bit.py</code>
 
 ### 3.2 classification head fine-tuning
+BERT에서는 classification task를 위해  모델에 classification head layer를 추가하고, <CLS> 토큰의 최종 은닉 벡터를 통과시킵니다. 
 
 <div align="center">
   <img width="300" height="250" alt="image" src="https://github.com/user-attachments/assets/148239b3-74d5-42ff-a4d4-9261c199a3b7" />
 </div>
 
+<code>QLoRA/run_finetuning.py</code>는 이 방식을 full fine-tuning으로 구현한 코드입니다. 
 
 ### 3.3 text-to-text fine-tuning
+
 
 <div align="center">
   <img width="600" height="300" alt="image" src="https://github.com/user-attachments/assets/0e8d3bf9-7ab2-4bb2-b66b-49e766000a8d" />
