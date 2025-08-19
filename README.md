@@ -93,7 +93,7 @@ $X = KW_k^{-1}$를 $V = XW_v$에 대입하면, $V = XW_v = KW_k^{-1}W_v = KW_{kv
 
 여기서 $W_{kv} = W_k^{-1}W_v$를 추론 전에 미리 계산해두면, 추론 과정에서는 K만 캐싱해두고 필요할 때마다 $V = KW_{kv}$를 계산할 수 있습니다.
 
-이것이 바로 slim attention 논문에서 주장하는 'K-Cache is all you need'이며, V-Cache를 사용하지 않기 때문에 기존 KV-Cache 메모리 사용량의 절반을 줄일 수 있습니다. 
+이것이 바로 slim attention 논문에서 주장하는 'K-Cache is all you need'이며, V-Cache를 사용하지 않기 때문에 기존 KV-Cache 메모리 사용량의 절반을 줄일 수 있습니다. <code>T5_Slim_Attention/slim_attention_and_relative_position_bias.py</code>
 
 <div align="center">
   <img width="600" height="600" alt="image" src="https://github.com/user-attachments/assets/867c82aa-3781-4ffa-a1d2-108b00b17256" />
