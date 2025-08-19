@@ -73,10 +73,45 @@
 
 
 ### 2.4 slim attention
-
+빠른 추론 속도를 위해 KV-Cache를 사용한다면, 추론을 수행할 때 K/V에 대한 계산 결과를 메모리에 저장하기 때문에 아래 그림처럼 모델 파라미터와 KV-Cache가 GPU 메모리를 대부분 차지하게 됩니다.
 <div align="center">
   <img width="200" height="150" alt="image" src="https://github.com/user-attachments/assets/1e12025b-63f7-4c6f-bb49-e4e7a65d79ac" />
 </div>
+- 위의 그림은 엔비디아 A100 40GB에서 13B 모델의 GPU 메모리 사용(전체 메모리 중 모델 파라미터가 약 65%를, KV-Cache가 30% 이상을 차지)을 시각화한 것입니다.
+
+slim attention(https://arxiv.org/abs/2503.05840)을 이용하면, KV-Cache가 차지하는 크기를 절반으로 줄이면서도 어텐션 연산을 수행할 수 있습니다.
+
+KV-Cache가 차지하는 크기가 절반을 줄어드는 이유는 V-Cache를 사용하지 않기 때문입니다. 
+
+이것이 가능한 이유는 K로부터 V를 계산하기 때문입니다. 즉, 추론 과정에서 V-Cache를 사용하지 않고 K-Cache만 사용합니다. 단, 가중치 행렬이 정방행렬이어야 한다는 조건이 붙습니다.
+
+입력 X에 대해 K = X W_k, V = X W_v  
+
+라고 하자. 만약 Wk, Wv ∈ R^(d×d) 가 정방행렬이고,  
+
+det(Wk) ≠ 0 (즉, 역행렬이 존재)라면  
+
+X = K * Wk^-1  
+
+이므로  
+
+V = X * Wv  
+  = K * Wk^-1 * Wv  
+  = K * Wkv  
+
+가 성립한다.  
+
+여기서  
+
+Wkv = Wk^-1 * Wv  
+
+를 추론 전에 미리 계산해두면, 추론 과정에서는 K만 캐싱해두고 필요할 때마다  
+
+V = K * Wkv  
+
+로 계산할 수 있다.
+
+
 
 <div align="center">
   <img width="600" height="600" alt="image" src="https://github.com/user-attachments/assets/867c82aa-3781-4ffa-a1d2-108b00b17256" />
