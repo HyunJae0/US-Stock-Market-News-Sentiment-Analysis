@@ -1,14 +1,14 @@
 # US Stock Market News Sentiment Analysis
-## 1. pre-training
 
-### 1.1 dataset 
+## 1. datasets
 
-### 1.2 tokenizer
+## 2. tokenizer
 
+## 3. pre-training
 
-### 1.3 t5
+### 3.3 t5
 
-### 1.4 slim attention
+### 3.4 slim attention
 
 
 <div align="center">
@@ -16,12 +16,10 @@
 </div>
 
 
-## 2. fine-tuning
+## 4. fine-tuning
 
-### 2.1 dataset
+### 4.1 qlora
 
-### 2.2 qlora
+### 4.2 classification head fine-tuning
 
-### 2.3 classification head fine-tuning
-
-### 2.4 text-to-text fine-tuning
+### 4.3 text-to-text fine-tuning
