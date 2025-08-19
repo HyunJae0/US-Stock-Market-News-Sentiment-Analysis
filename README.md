@@ -75,7 +75,7 @@
 ### 2.4 slim attention
 
 <div align="center">
-  <img width="403" height="362" alt="image" src="https://github.com/user-attachments/assets/1e12025b-63f7-4c6f-bb49-e4e7a65d79ac" />
+  <img width="200" height="150" alt="image" src="https://github.com/user-attachments/assets/1e12025b-63f7-4c6f-bb49-e4e7a65d79ac" />
 </div>
 
 <div align="center">
