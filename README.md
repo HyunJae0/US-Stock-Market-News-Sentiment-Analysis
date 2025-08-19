@@ -18,9 +18,9 @@
 
 ## 2. pre-training
 
-### 2.3 t5
+### 2.3 slim attention
 
-### 2.4 slim attention
+### 2.4 t5
 
 
 <div align="center">
