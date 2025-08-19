@@ -55,8 +55,13 @@
 - <code>run_pretraining.py</code>의 <code>create_t5_pretraining_data</code> 함수
 
 - AMP(Automatic Mixed Precision): 학습 시 메모리 사용량을 줄이기 위해 PyTorch의 AMP를 사용하였습니다.
-- 모델 파라미터는 FP32으로 유지하되, 연산(곱셈, 덧셈 등)만 FP16으로 수행합니다.
-- 
+- <code>run_pretraining.py</code>의 <code>train</code> 함수
+- 참고: https://yjoonjang.medium.com/mixed-precision-training%EC%97%90-%EB%8C%80%ED%95%B4-%EC%95%8C%EC%95%84%EB%B3%B4%EC%9E%90-mp-amp-torch-cuda-amp-15c99488ed34
+
+- Sentinel Token Loss Handling:
+
+- 배치 사이즈를 64로 사용할 때, 에폭당 스텝 수는 1,670이며 40 에폭 동안 학습할 경우, 총 학습 스텝 수는 66,800입니다. 이 중 10%를 웜업 스텝으로 설정하였습니다. <code>config.py</code>
+- 논문처럼 Adafactor optimizer와 inverse square root learning rate schedule을 사용했습니다. <code>run_pretraining.py</code>
 
 ### 2.4 slim attention
 
