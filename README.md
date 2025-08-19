@@ -56,7 +56,11 @@
 - AMP(Automatic Mixed Precision): 학습 시 메모리 사용량을 줄이기 위해 PyTorch의 AMP를 사용하였습니다. <code>run_pretraining.py</code>의 <code>train</code> 함수
 - 참고: https://yjoonjang.medium.com/mixed-precision-training%EC%97%90-%EB%8C%80%ED%95%B4-%EC%95%8C%EC%95%84%EB%B3%B4%EC%9E%90-mp-amp-torch-cuda-amp-15c99488ed34
 
-- Sentinel Token Loss Handling:
+- Sentinel Token Loss Handling: 모델의 학습 및 평가 과정에서는 센티널 토큰에 대한 손실이 모델에 반영되지 않도록 해야 합니다.
+- 예를 들어, input = 'The <extra_id_0> walks in <extra_id_1> park'  labels = '<extra_id_0> cute dog <extra_id_1> the <extra_id_2>'이라면 모델은 <extra_id>를 예측하게 됩니다.
+- 그러나, 이 <extra_id>는 '정답'이라기 보다는 빈칸에 대한 신호이기 때문에 <extra_id>에 대한 loss가 계산되는 것을 방지해야 합니다. 그렇지 않으면,  <extra_id_0> 다음에는 cute가 온다는 걸 학습해버리기 때문입니다.
+- 그래서 <extra_id>에 대한 loss를 계산하지 않도록 하기 위해 이 센티널 토큰들을 pad_idx로 대체하였습니다. <code>run_pretraining.py</code>의 <code>train</code> 및 <code>eval</code> 함수
+
 
 - 배치 사이즈를 64로 사용할 때, 에폭당 스텝 수는 1,670이며 40 에폭 동안 학습할 경우, 총 학습 스텝 수는 66,800입니다. 이 중 10%를 웜업 스텝으로 설정하였습니다. <code>config.py</code>
 - 논문처럼 Adafactor optimizer와 inverse square root learning rate schedule을 사용했습니다. <code>run_pretraining.py</code>
