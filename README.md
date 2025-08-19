@@ -17,6 +17,7 @@
 비지도 사전학습을 위한 데이터셋 처리에 대한 내용은 <code>prepare_unsupervised_dataset_for_pretraining.ipynb</code>에서, 파인튜닝을 위한 데이터셋 처리에 대한 내용은 <code>prepare_supervised_dataset_for_finetuning.ipynb</code>에서 확인할 수 있습니다. 
 
 ## 2. pre-training
+### 2.3 t5
 사전학습 모델은 Google에서 발표한 "Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer" 논문(https://arxiv.org/abs/1910.10683)에서 제안된 T5(Text-to-Text Transfer Transformer) 모델의 방법론을 기반으로 합니다. 
 
 1. 시퀀스 패킹(sequence packing)
@@ -38,6 +39,11 @@
 3. 사전학습 목적 함수
 - 사전학습에는 T5 논문에서 제안한 replace corrupted spans objective를 사용했습니다.
 -  이 방식은 아래 그림처럼 입력 텍스트에서 연속된 토큰들의 span을 무작위로 선택한 다음, 선택된 각 스팬을 sentinel 토큰 하나로 대체하여 모델의 입력으로 사용합니다. 모델은 이 입력을 받아, loss를 계산하여 학습을 진행합니다.
+
+<div align="center">
+  <img width="350" height="150" alt="image" src="https://github.com/user-attachments/assets/40b5a0d0-a921-404c-b5d5-4befa2788d5f" />
+</div>
+
 - 이에 대한 내용은 <code>T5_Slim_Attention/T5_Slim_Attention/span_corruption.py</code>에서 확인할 수 있습니다.
 
 4. Multi-task Learning 
@@ -46,13 +52,10 @@
 
 
 
-### 2.3 slim attention
+### 2.4 slim attention
 
-### 2.4 t5
 
-<div align="center">
-  <img width="350" height="150" alt="image" src="https://github.com/user-attachments/assets/40b5a0d0-a921-404c-b5d5-4befa2788d5f" />
-</div>
+
 
 
 <div align="center">
