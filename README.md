@@ -136,3 +136,8 @@ BERT에서는 classification task를 위해  모델에 classification head layer
 <div align="center">
   <img width="600" height="300" alt="image" src="https://github.com/user-attachments/assets/0e8d3bf9-7ab2-4bb2-b66b-49e766000a8d" />
 </div>
+
+### 보완할 점
+The Depth-to-Width Interplay in Self-Attention(https://arxiv.org/abs/2006.12467)에 따르면, 모델의 성능은 모델의 aspect ratio 변화에 비교적 강건하다.
+
+본 프로젝트에서는 small model을 만들기 위해 6 layers를 사용했지만, 줄어든 레이어 수로 인한 성능 저하를 고려하지 않았다. 이를 보완하기 위해 상대적으로 넓은 은닉 차원(d_model)을 사용할 필요가 있다. 
