@@ -17,7 +17,7 @@
 비지도 사전학습을 위한 데이터셋 처리에 대한 내용은 <code>prepare_unsupervised_dataset_for_pretraining.ipynb</code>에서, 파인튜닝을 위한 데이터셋 처리에 대한 내용은 <code>prepare_supervised_dataset_for_finetuning.ipynb</code>에서 확인할 수 있습니다. 
 
 ## 2. pre-training
-### 2.3 t5
+### 2.1 T5
 사전학습 모델은 Google에서 발표한 "Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer" 논문(https://arxiv.org/abs/1910.10683)에서 제안된 T5(Text-to-Text Transfer Transformer) 모델의 방법론을 기반으로 합니다. 
 
 1. 시퀀스 패킹(sequence packing)
@@ -72,7 +72,7 @@
 </div>
 
 
-### 2.4 slim attention
+### 2.2 slim attention
 빠른 추론 속도를 위해 KV-Cache를 사용한다면, 추론을 수행할 때 K/V에 대한 계산 결과를 메모리에 저장하기 때문에 아래 그림처럼 모델 파라미터와 KV-Cache가 GPU 메모리를 대부분 차지하게 됩니다.
 <div align="center">
   <img width="200" height="150" alt="image" src="https://github.com/user-attachments/assets/1e12025b-63f7-4c6f-bb49-e4e7a65d79ac" />
