@@ -217,15 +217,18 @@ class DecoderSelfAttentionWithKcache(Attention):
             if mask is not None:
                 scores = scores.masked_fill(mask == False, -1e4)
 
-            weights = self.dropout(self.softmax(scores))
-            weights_k = weights @ K_all_h # [batch_size, num_heads, 1, key_length] @ [batch_size, num_heads, key_length, head_dim]
-            # [batch_size, num_heads, 1, head_dim]
+            ## equation(5) Option2
+            weights = self.dropout(self.softmax(scores)) # [batch_size, num_heads, 1, key_length]
+            weights_matmul_k_full = torch.matmul(weights, self.k_cache.unsqueeze(1)) # [batch_size, num_heads, 1, d_model]
+            # [batch_size, num_heads, 1, key_length] @ [batch_size, 1, key_length, d_model]
+            
+            W_kv_blocks = self.W_kv.view(self.d_model, self.num_heads, self.head_dim) # [d_model, d_model] -> [d_model, num_heads, head_dim]
+            W_kv_blocks = W_kv_blocks.permute(1, 0, 2).contiguous() # [num_heads, d_model, head_dim]
 
-            context_1 = self._concat_heads(weights_k)  # [batch_size, 1, num_heads * head_dim]
-
-            context_2 = context_1 @ self.W_kv  # [batch_size, 1, d_model] @ [d_model, d_model] -> [batch_size, 1, d_model]
-
-            context = self.W_o(context_2)
+            context_h = torch.matmul(weights_matmul_k_full, W_kv_blocks.unsqueeze(0)) # [batch_size, num_heads, 1, head_dim]
+            # [batch_size, num_heads, 1, d_model] @ [1, num_heads, d_model, head_dim]
+            
+            context = self.W_o(self._concat_heads(context_h))
         return context, position_bias
 
 
@@ -277,6 +280,7 @@ class CrossAttentionWithKVCache(Attention):
         context_h = weights @ V_h
         context = self.W_o(self._concat_heads(context_h))
         return context
+
 
 
 
