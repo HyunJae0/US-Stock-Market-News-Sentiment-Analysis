@@ -1,4 +1,4 @@
-from t5.layernorm import T5LayerNorm
+from t5.rmsnorm import T5LayerNorm
 from t5.feed_forward_network import T5FeedForwardNetwork
 from t5.slim_attention_and_relative_position_bias import *
 
@@ -197,3 +197,4 @@ class T5Transformer(nn.Module):
             if generation_finish_mask.all(): break # terminate generate phase when all sequences generated
 
         return trg_tokens
+
